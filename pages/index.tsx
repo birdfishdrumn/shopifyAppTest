@@ -8,6 +8,7 @@ import ProductList from "../components/ProductList";
 const Index = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [products, setProducts] = useState([])
+
   const handleProductSelection = (payload:SelectPayload) => {
     setIsOpen(false);
 
