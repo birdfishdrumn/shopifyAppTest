@@ -1,5 +1,6 @@
 import Router from "koa-router";
 import { createScriptTag } from "../controllers/script_tag_controller";
+
 const router = new Router({ prefix: "/script_tag" });
 
 router.get("/", async (ctx) => {
