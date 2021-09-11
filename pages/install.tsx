@@ -1,10 +1,8 @@
 import { Layout, Page, SettingToggle, TextStyle } from '@shopify/polaris'
 import React, { useState } from 'react'
-import axios from "axios"
-import { useAppBridge } from "@shopify/app-bridge-react";
-import { getSessionToken } from "@shopify/app-bridge-utils";
+import { useAxios  } from "hooks/useAxios";
 const install = () => {
-  const app =useAppBridge()
+  const [axios] = useAxios()
   const [isInstalled, setIsInstalled] = useState(null)
   const titleDescription = isInstalled ? "Uninstall" : "Install"
   const bodyDescription = isInstalled ? "installed" : "uninstalled"
@@ -12,11 +10,7 @@ const install = () => {
   // scriptタグを取得する処理
   async function handleAction() {
     if (!isInstalled) {
-      const token = await getSessionToken(app)
-      const config = {
-         headers: {Authorization: `Bearer ${token}`}
-      }
-      axios.post(`https://ea12-60-74-195-202.ngrok.io/script_tag`,{},config)
+      axios.post(`https://ea12-60-74-195-202.ngrok.io/script_tag`)
     }
      setIsInstalled(prevState => !prevState)
   }
