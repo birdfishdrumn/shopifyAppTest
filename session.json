@@ -1,10 +1,10 @@
 {
-  "id": "28151845-8542-4252-966d-eba6f6bda1aa",
+  "id": "0907d6b3-489e-4096-9a43-ad72e300e8da",
   "shop": "maruyosi-fuurin.myshopify.com",
-  "state": "916540926364906",
+  "state": "860706160866499",
   "isOnline": true,
-  "accessToken": "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",
-  "expires": "2021-09-11T03:03:51.135Z",
+  "accessToken": "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",
+  "expires": "2021-09-11T05:17:03.203Z",
   "scope": "write_products,write_customers,write_draft_orders",
   "onlineAccessInfo": {
     "expires_in": 86398,
