@@ -1,6 +1,6 @@
 import Router from "koa-router";
 import { createScriptTag } from "../controllers/script_tag_controller";
-
+import Shopify from "@shopify/shopify-api";
 const router = new Router({ prefix: "/script_tag" });
 
 router.get("/", async (ctx) => {
@@ -12,9 +12,14 @@ router.get("/all", async (ctx) => {
 });
 
 router.post("/", async (ctx) => {
-  const { shop, accessToken } = ctx.state.shopify;
+  console.log("create script tag", ctx.sesionFromToken);
+  const { shop, accessToken } = ctx.sesionFromToken;
+
+  // const session = await Shopify.Utils.loadCurrentSession(ctx.req, ctx.res)
+  // console.log("session from token", session)
+  // await createScriptTag(session.shop, session.accessToken);
   await createScriptTag(shop, accessToken);
-  ctx.body = "Create Script Tag";
+  ctx.body = "Create a Script Tag";
 });
 router.delete("/all", async (ctx) => {
   ctx.body = "Delete Script Tag";

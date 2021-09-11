@@ -7,7 +7,7 @@ import Koa from "koa";
 import next from "next";
 import Router from "koa-router";
 import fs from "fs";
-import { Session } from "@shopify/shopify-api/dist/auth/session/";
+import { Session } from "@shopify/shopify-api/dist/auth/session";
 import routes from "./router/index";
 
 dotenv.config();
@@ -120,6 +120,16 @@ app.prepare().then(async () => {
       await Shopify.Utils.graphqlProxy(ctx.req, ctx.res);
     }
   );
+
+  async function injectSession(ctx, next) {
+    console.log(ctx.res);
+    const session = await Shopify.Utils.loadCurrentSession(ctx.req, ctx.res);
+    ctx.sesionFromToken = session;
+    console.log("mission", session);
+    return next();
+  }
+
+  server.use(injectSession);
   server.use(routes());
 
   router.get("(/_next/static/.*)", handleRequest); // Static content is clear

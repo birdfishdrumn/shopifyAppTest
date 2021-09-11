@@ -7,19 +7,21 @@ const install = () => {
   const app =useAppBridge()
   const [isInstalled, setIsInstalled] = useState(null)
   const titleDescription = isInstalled ? "Uninstall" : "Install"
-  const bodyDescription = isInstalled ?  "installed" : "uninstalled"
+  const bodyDescription = isInstalled ? "installed" : "uninstalled"
+  console.log(process.env.HOST)
+  // scriptタグを取得する処理
   async function handleAction() {
     if (!isInstalled) {
       const token = await getSessionToken(app)
       const config = {
          headers: {Authorization: `Bearer ${token}`}
       }
-      axios.post(`${ process.env.HOST}/script_tag`,{},config)
+      axios.post(`https://ea12-60-74-195-202.ngrok.io/script_tag`,{},config)
     }
      setIsInstalled(prevState => !prevState)
   }
   return (
-    <Page>c vhbh gg
+    <Page>
       <Layout.AnnotatedSection
         title={`${titleDescription} banner`}
         description="Toggle banner installation on your shop"

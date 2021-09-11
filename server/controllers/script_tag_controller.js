@@ -1,10 +1,12 @@
 import axios from "axios";
 
-export const createScriptTag = async (shop) => {
-  const url = getCreateScriptTagUrl(shop, token);
+export const createScriptTag = async (shop, accessToken) => {
+  const url = getCreateScriptTagUrl(shop);
   const headers = {
-    "Content-Type": "application/json",
-    "X-Shopify-Access-Token": token,
+    headers: {
+      "Content-Type": "application/json",
+      "X-Shopify-Access-Token": accessToken,
+    },
   };
   const body = {
     script_tag: {
@@ -15,6 +17,7 @@ export const createScriptTag = async (shop) => {
   try {
     const result = await axios.post(url, body, headers);
     console.log(result.data);
+    return result.data;
   } catch (e) {
     console.error("Error", e);
   }
