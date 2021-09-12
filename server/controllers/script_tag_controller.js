@@ -20,6 +20,18 @@ export const createScriptTag = async (client) => {
   console.error("could not make the res request as the client");
 };
 
+export const getAllScriptTags = async (client, src) => {
+  if (!client) {
+    console.error("could not make rest request as the client does not exist");
+    return;
+  }
+  const result = await client.get({
+    path: "script_tags",
+  });
+  const matchSrc = result.body.script_tags.filter((tag) => tag.src === src);
+  return matchSrc;
+};
+
 function getBaseUrl(shop) {
   return `https://${shop}`;
 }
