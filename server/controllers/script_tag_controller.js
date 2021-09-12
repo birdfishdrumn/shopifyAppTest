@@ -1,26 +1,23 @@
 import axios from "axios";
+import { DataType } from "@shopify/shopify-api";
 
-export const createScriptTag = async (shop, accessToken) => {
-  const url = getCreateScriptTagUrl(shop);
-  const headers = {
-    headers: {
-      "Content-Type": "application/json",
-      "X-Shopify-Access-Token": accessToken,
-    },
-  };
-  const body = {
-    script_tag: {
-      event: "onload",
-      src: "https://google.com",
-    },
-  };
-  try {
-    const result = await axios.post(url, body, headers);
-    console.log(result.data);
-    return result.data;
-  } catch (e) {
-    console.error("Error", e);
+export const createScriptTag = async (client) => {
+  if (client) {
+    const data = {
+      script_tag: {
+        event: "onload",
+        src: "https://google.com",
+      },
+    };
+    const result = await client.post({
+      path: "script_tags",
+      data,
+      type: DataType.JSON,
+    });
+    console.log("Result", result);
+    return result;
   }
+  console.error("could not make the res request as the client");
 };
 
 function getBaseUrl(shop) {

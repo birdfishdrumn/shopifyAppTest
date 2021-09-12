@@ -125,6 +125,13 @@ app.prepare().then(async () => {
     console.log(ctx.res);
     const session = await Shopify.Utils.loadCurrentSession(ctx.req, ctx.res);
     ctx.sesionFromToken = session;
+    if (session && session.shop && session.accessToken) {
+      const client = new Shopify.Clients.Rest(
+        session.shop,
+        session.accessToken
+      );
+      ctx.myClient = client;
+    }
     console.log("mission", session);
     return next();
   }

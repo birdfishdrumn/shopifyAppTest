@@ -10,7 +10,7 @@ const install = () => {
   // scriptタグを取得する処理
   async function handleAction() {
     if (!isInstalled) {
-      axios.post(`https://ea12-60-74-195-202.ngrok.io/script_tag`)
+      axios.post(`https://f901-60-74-195-202.ngrok.io/script_tag`)
     }
      setIsInstalled(prevState => !prevState)
   }
