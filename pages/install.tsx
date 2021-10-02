@@ -9,7 +9,7 @@ const install = () => {
   const bodyDescription = isInstalled ? "installed" : "uninstalled"
   console.log(process.env.HOST)
   // scriptタグを取得する処理
- const baseUrl = "https://fa15-220-158-59-244.ngrok.io"
+ const baseUrl = "https://a819-126-53-16-105.ngrok.io"
 
     const fetchScriptTags = async() => {
       const { data } = await axios.get(`${baseUrl}/script_tag/all`)
