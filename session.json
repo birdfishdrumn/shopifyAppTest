@@ -1,25 +1,25 @@
 {
-  "id": "34941d7c-d632-46fb-80d9-beec289f5f99",
+  "id": "a6673513-9bdc-4fe2-8c85-f3d89d606b2e",
   "shop": "maruyosi-fuutan.myshopify.com",
-  "state": "814444565760579",
+  "state": "061764227648498",
   "isOnline": true,
-  "accessToken": "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",
-  "expires": "2021-09-11T22:01:26.708Z",
+  "accessToken": "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",
+  "expires": "2021-10-02T02:27:54.571Z",
   "scope": "write_products,write_customers,write_draft_orders,write_script_tags",
   "onlineAccessInfo": {
     "expires_in": 86398,
     "associated_user_scope": "write_products,write_customers,write_draft_orders,write_script_tags",
-    "session": null,
-    "account_number": null,
+    "session": "06ed404424dc1a8b4c4d8e60cf5ae153c51021adedb9068d6993fffcb052659d",
+    "account_number": 1,
     "associated_user": {
       "id": 77229457589,
-      "first_name": "maruyosi-fuutan",
-      "last_name": "Admin",
+      "first_name": "正義",
+      "last_name": "篠原",
       "email": "maruyosifuurin@gmail.com",
       "account_owner": true,
       "locale": "ja-JP",
       "collaborator": false,
-      "email_verified": false
+      "email_verified": true
     }
   }
 }

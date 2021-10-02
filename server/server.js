@@ -122,7 +122,6 @@ app.prepare().then(async () => {
   );
 
   async function injectSession(ctx, next) {
-    console.log(ctx.res);
     const session = await Shopify.Utils.loadCurrentSession(ctx.req, ctx.res);
     ctx.sesionFromToken = session;
     if (session && session.shop && session.accessToken) {

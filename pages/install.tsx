@@ -9,13 +9,13 @@ const install = () => {
   const bodyDescription = isInstalled ? "installed" : "uninstalled"
   console.log(process.env.HOST)
   // scriptタグを取得する処理
- const baseUrl = "https://f901-60-74-195-202.ngrok.io"
+ const baseUrl = "https://fa15-220-158-59-244.ngrok.io"
 
     const fetchScriptTags = async() => {
       const { data } = await axios.get(`${baseUrl}/script_tag/all`)
       console.log(data)
       setIsInstalled(data.installed)
-      if (data.details > 0) {
+      if (data.details.length > 0) {
         setScriptTagId(data.details[0].id)
       }
     }
@@ -25,6 +25,7 @@ const install = () => {
   fetchScriptTags()
 
   }, [isInstalled])
+  console.log(scriptTagId)
 
   async function handleAction() {
     if (!isInstalled) {
