@@ -1,10 +1,10 @@
 {
-  "id": "97ce9c72-709d-4e6d-9931-09fe7ecc5383",
+  "id": "3918ae2b-3025-431b-961d-4dea60df701a",
   "shop": "maruyosi-fuutan.myshopify.com",
-  "state": "826957914870630",
+  "state": "226341485831916",
   "isOnline": true,
-  "accessToken": "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",
-  "expires": "2021-10-02T23:47:58.193Z",
+  "accessToken": "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",
+  "expires": "2021-10-03T00:48:10.166Z",
   "scope": "write_products,write_customers,write_draft_orders,write_script_tags,write_themes",
   "onlineAccessInfo": {
     "expires_in": 86398,

@@ -16,13 +16,22 @@ export async function updateTheme(shop, accessToken) {
     return;
   }
   const newPage = await getAssetThemeLiquid(mainThemeId, axios);
+  if (newPage) {
+    await uploadAssetTheme(axios, mainThemeId, newPage, "layout/theme.liquid");
+  }
   // pageの名前は実際のliquidのディレクトリ構造を参照する。
-  const result = await uploadAssetTheme(
+
+  const newSnippet = getSnippetFile("../../liquid/banner-app.liquid");
+  await uploadAssetTheme(
     axios,
     mainThemeId,
-    newPage,
-    "layout/theme.liquid"
+    newSnippet,
+    "snippets/banner-app.liquid"
   );
+}
+
+function getSnippetFile(fileName) {
+  return fs.readFileSync(path.resolve(__dirname, fileName), "utf-8");
 }
 // 既存のliquidに新しい行を追加する処理
 async function uploadAssetTheme(axios, id, page, pageName) {
@@ -32,8 +41,12 @@ async function uploadAssetTheme(axios, id, page, pageName) {
       value: page,
     },
   };
-  const result = await axios.put(`/themes/${id}/assets.json`, body);
-  console.log("upload page", result);
+  try {
+    await axios.put(`/themes/${id}/assets.json`, body);
+    console.log(`Upload ${pageName}`);
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 async function getAssetThemeLiquid(id, axios) {
@@ -45,9 +58,8 @@ async function getAssetThemeLiquid(id, axios) {
     return;
   }
 
-  const snippet = fs.readFileSync(
-    path.resolve(__dirname, "../../liquid/theme.liquid")
-  );
+  const snippet = getSnippetFile("../../liquid/theme.liquid");
+
   let newPage = data.asset.value;
   if (newPage.includes(snippet)) {
     console.log("page already exists");
